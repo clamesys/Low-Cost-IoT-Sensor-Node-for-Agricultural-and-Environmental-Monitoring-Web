@@ -27,16 +27,8 @@ def send_data():
             device_data = generate_fake_data(device)
 
             # Send data to Flask server via HTTP POST
-            try:
-                response = requests.post(flask_server_url, json=device_data)
-                if response.status_code == 200:
-                    print(f"Data sent for {device}: {device_data}")
-                else:
-                    print(f"Failed to send data for {device}")
-            except requests.exceptions.RequestException as e:
-                print(f"Error sending data: {e}")
-        
-        # Wait before sending the next set of data
+            response = requests.post(flask_server_url, json=device_data)
+            
         time.sleep(2)
 
 if __name__ == "__main__":
